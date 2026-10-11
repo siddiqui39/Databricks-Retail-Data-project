@@ -1,0 +1,17 @@
+# Spark Declarative Pipeline: retail_transform_v2
+# Bronze → Silver → Gold transformations
+
+resources:
+  pipelines:
+    retail_transform_v2:
+      name: retail_transform_v2
+      catalog: ${var.catalog}
+      target: ${var.pipeline_schema}
+      channel: CURRENT
+      photon: true
+      serverless: true
+      libraries:
+        - notebook:
+            path: ../pipelines/retail_transform_v2/bronze_to_silver
+        - notebook:
+            path: ../pipelines/retail_transform_v2/silver_to_gold

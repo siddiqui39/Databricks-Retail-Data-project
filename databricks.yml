@@ -1,0 +1,20 @@
+# Declarative Automation Bundle (DAB) - RetailQ Project
+# Medallion architecture: Bronze (raw) → Silver (cleaned) → Gold (dimensional) → Semantic (metrics)
+
+bundle:
+  name: retailq_project
+
+variables:
+  catalog:
+    description: "Unity Catalog name"
+    default: retail_q
+  pipeline_schema:
+    description: "Schema for pipeline tables"
+    default: retail_silver
+
+targets:
+  default:
+    mode: development
+    default: true
+    workspace:
+      root_path: /Workspace/Users/${workspace.current_user.domain_friendly_name}/.bundle/${bundle.name}
